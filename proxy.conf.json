@@ -1,0 +1,15 @@
+{
+  "/api/*": {
+    "target": "http://35.187.97.26:5000",
+    "secure": false
+  },
+  "/flickr/*": {
+    "target": "https://api.flickr.com",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/flickr": "/services/rest"
+    },
+    "logLevel": "debug"
+  }
+}

@@ -1,0 +1,35 @@
+<mat-toolbar color="primary">
+  <mat-icon class="example-icon clickable" [routerLink]="'/'">home</mat-icon>
+  <span class="vox-divider"></span>
+  <span [routerLink]="'../..'" class="clickable">{{speakerName}}</span>
+</mat-toolbar>
+
+<mat-list>
+  <h3 mat-subheader="">Album {{albumName}}</h3>
+  <mat-list-item *ngFor="let image of dataSource" [ngStyle]="{'height.px': image.image.height}">
+    <a [href]="image.image.url">
+      <img [src]="image.image.source" [width]="image.image.width" [height]="image.image.height">
+    </a>
+
+    <!--<mat-icon mat-list-icon>insert_photo</mat-icon>-->
+    <!--<a mat-list-avatar class="list-avatar">{{image.id}}</a>-->
+
+    <span class="image-match">{{image.match}}%</span>
+
+    <mat-radio-group [(ngModel)]="image.validation" (ngModelChange)="updateValidation(image)">
+      <mat-radio-button class="example-margin" [value]="null">Not yet validated</mat-radio-button>
+      <span class="vox-divider"></span>
+      <mat-radio-button class="example-margin" [value]="true">Approved</mat-radio-button>
+      <span class="vox-divider"></span>
+      <mat-radio-button class="example-margin" [value]="false">Declined</mat-radio-button>
+    </mat-radio-group>
+  </mat-list-item>
+</mat-list>
+
+<mat-paginator #paginator
+               [length]="length"
+               [pageIndex]="pageIndex"
+               [pageSize]="pageSize"
+               [pageSizeOptions]="[5, 10, 25, 100]"
+               (page)="pageEvent = getServerData($event)">
+</mat-paginator>

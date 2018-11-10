@@ -1,0 +1,12 @@
+<mat-toolbar color="primary">
+  <mat-icon class="example-icon clickable" [routerLink]="'/'">home</mat-icon>
+</mat-toolbar>
+
+<mat-nav-list>
+  <h3 mat-subheader>Speaker {{speakerName}}</h3>
+  <a mat-list-item [routerLink]="['album', album.name]" *ngFor="let album of albums">
+    <mat-icon mat-list-icon>folder</mat-icon>
+    <h4 mat-line>{{album.name}}</h4>
+    <p mat-line>{{album.images.length}} photos</p>
+  </a>
+</mat-nav-list>
